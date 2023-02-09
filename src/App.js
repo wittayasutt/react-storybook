@@ -10,7 +10,9 @@ const App = () => {
 		<Layout>
 			{hasItems ? (
 				<ProductList>
-					<ProductItem />
+					{[...Array(6).keys()].map((index) => (
+						<ProductItem key={index} />
+					))}
 				</ProductList>
 			) : (
 				<ProductListEmptyState />

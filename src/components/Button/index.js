@@ -1,28 +1,63 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const Wrapper = styled.button`
+const Wrapper = styled.div`
+	.primary {
+		color: ${(props) => props.theme.color.black};
+		background-color: ${(props) => props.theme.color.bananaYellow};
+		border: 1px solid ${(props) => props.theme.color.bananaYellow};
+
+		&:hover {
+			background-color: ${(props) => props.theme.color.bananaYellowLight};
+			border-color: ${(props) => props.theme.color.bananaYellowLight};
+		}
+	}
+
+	.secondary {
+		color: ${(props) => props.theme.color.black};
+		background-color: transparent;
+		border: 1px solid ${(props) => props.theme.color.blackAbsolute};
+
+		&:hover {
+			border-color: ${(props) => props.theme.color.bananaYellow};
+		}
+	}
+
+	.tertiary {
+		color: ${(props) => props.theme.color.black};
+		background-color: ${(props) => props.theme.color.bananaYellowLight};
+		border: 1px solid ${(props) => props.theme.color.bananaYellow};
+	}
+
+	.small {
+		height: 32px;
+		min-width: 80px;
+		font-size: 14px;
+	}
+
+	.medium {
+		height: 40px;
+		min-width: 112px;
+		font-size: 16px;
+	}
+
+	.large {
+		height: 48px;
+		min-width: 136px;
+		font-size: 18px;
+	}
+`;
+
+const Button = styled.button`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 
-	height: 42px;
-	min-width: 112px;
 	${(props) => props.fullWidth && 'width: 100%;'};
 	padding: 8px;
-
-	color: ${(props) => props.color};
-	background-color: ${(props) => props.backgroundColor};
-	border: 1px solid ${(props) => props.borderColor};
 	border-radius: 4px;
-	font-size: 16px;
 
 	cursor: pointer;
-
-	&:hover {
-		background-color: ${(props) => props.hoverBackgroundColor};
-		border: 1px solid ${(props) => props.hoverBorderColor};
-	}
 
 	&:disabled {
 		opacity: 0.4;
@@ -30,56 +65,33 @@ const Wrapper = styled.button`
 	}
 `;
 
-const Button = ({
-	children,
-	color,
-	backgroundColor,
-	borderColor,
-	hoverBackgroundColor,
-	hoverBorderColor,
-	size,
-	fullWidth,
-	onClick,
-}) => {
+const ButtonComponent = ({ label, variant, size, fullWidth, onClick }) => {
 	return (
-		<Wrapper
-			color={color}
-			backgroundColor={backgroundColor}
-			borderColor={borderColor}
-			hoverBackgroundColor={hoverBackgroundColor}
-			hoverBorderColor={hoverBorderColor}
-			size={size}
-			fullWidth={fullWidth}
-			onClick={onClick}>
-			{children}
+		<Wrapper>
+			<Button
+				className={[variant, size].join(' ')}
+				size={size}
+				fullWidth={fullWidth}
+				onClick={onClick}>
+				{label}
+			</Button>
 		</Wrapper>
 	);
 };
 
-Button.propTypes = {
-	children: PropTypes.node,
+ButtonComponent.propTypes = {
+	label: PropTypes.string.isRequired,
+	variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
 	size: PropTypes.oneOf(['small', 'medium', 'large']),
 	fullWidth: PropTypes.bool,
 	onClick: PropTypes.func,
-
-	color: PropTypes.string,
-	backgroundColor: PropTypes.string,
-	borderColor: PropTypes.string,
-	hoverBackgroundColor: PropTypes.string,
-	hoverBorderColor: PropTypes.string,
 };
 
-Button.defaultProps = {
-	children: <></>,
+ButtonComponent.defaultProps = {
+	variant: 'primary',
 	size: 'medium',
 	fullWidth: false,
 	onClick: undefined,
-
-	color: '#252525',
-	backgroundColor: '#fd0',
-	borderColor: '#fd0',
-	hoverBackgroundColor: '#ffee7f',
-	hoverBorderColor: '#ffee7f',
 };
 
-export default Button;
+export default ButtonComponent;
