@@ -42,7 +42,7 @@ const ButtonWrapper = styled.div`
 	padding: 16px;
 `;
 
-const Card = ({ borderRadius }) => {
+const ProductItem = ({ borderRadius }) => {
 	return (
 		<Wrapper borderRadius={borderRadius}>
 			<ImageWrapper>
@@ -62,12 +62,12 @@ const Card = ({ borderRadius }) => {
 	);
 };
 
-Card.propTypes = {
+ProductItem.propTypes = {
 	borderRadius: PropTypes.number,
 };
 
-Card.defaultProps = {
+ProductItem.defaultProps = {
 	borderRadius: 8,
 };
 
-export default Card;
+export default ProductItem;
