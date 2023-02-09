@@ -14,14 +14,14 @@ const Wrapper = styled.div`
 
 	padding: 16px;
 
-	@media only screen and (min-width: 768px) {
+	@media only screen and (min-width: ${(props) => props.theme.breakpoint.tablet }) {
 		grid-template-columns: repeat(
 			${(props) => props.itemsPerRowTablet},
 			minmax(0, 1fr)
 		);
 	}
 
-	@media only screen and (min-width: 1024px) {
+	@media only screen and (min-width: ${(props) => props.theme.breakpoint.desktop }) {
 		grid-template-columns: repeat(
 			${(props) => props.itemsPerRowDesktop},
 			minmax(0, 1fr)

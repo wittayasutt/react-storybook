@@ -8,7 +8,7 @@ const Wrapper = styled.main`
 	min-height: calc(100vh - 40px);
 
 	background-color: ${(props) =>
-		props.backgroundColor ? props.backgroundColor : '#f8f8f8'};
+		props.backgroundColor ? props.backgroundColor : props.theme.color.white};
 `;
 
 const Container = styled.div`

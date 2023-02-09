@@ -11,7 +11,7 @@ const Wrapper = styled.header`
 	top: 0;
 
 	background-color: ${(props) =>
-		props.backgroundColor ? props.backgroundColor : '#ffffff'};
+		props.backgroundColor ? props.backgroundColor : props.theme.color.white};
 `;
 
 const Container = styled.div`
@@ -25,7 +25,7 @@ const Container = styled.div`
 
 	font-weight: 500;
 
-	@media only screen and (min-width: 1024px) {
+	@media only screen and (min-width: ${(props) => props.theme.breakpoint.desktop}) {
 		padding: 0;
 	}
 `;
@@ -33,7 +33,7 @@ const Container = styled.div`
 const LogoLink = styled.a`
 	height: 32px;
 
-	@media only screen and (min-width: 1024px) {
+	@media only screen and (min-width: ${(props) => props.theme.breakpoint.desktop}) {
 		height: 44px;
 	}
 `;
@@ -46,7 +46,7 @@ const SignIn = styled.div`
 	cursor: pointer;
 
 	&:hover {
-		color: #eba614;
+		color: ${(props) => props.theme.color.mango};
 	}
 `;
 

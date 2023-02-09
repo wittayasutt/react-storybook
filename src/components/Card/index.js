@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Button from '../Button';
+import ButtonPrimary from '../Button/primary';
 
 const Wrapper = styled.div`
-	background-color: #ffffff;
+	background-color: ${(props) => props.theme.color.whiteAbsolute};
 	border-radius: ${(props) => `${props.borderRadius}px`};
 
 	cursor: pointer;
@@ -35,7 +35,7 @@ const DetailTitle = styled.div``;
 
 const DetailPrice = styled.div`
 	font-weight: 700;
-	color: #f1574f;
+	color: ${(props) => props.theme.color.salePrice};
 `;
 
 const ButtonWrapper = styled.div`
@@ -47,7 +47,7 @@ const Card = ({ borderRadius }) => {
 		<Wrapper borderRadius={borderRadius}>
 			<ImageWrapper>
 				<Image
-					src={require('../../images/iphone14.webp')}
+					src={require('../../assets/images/iphone14.webp')}
 					alt='product image'
 				/>
 			</ImageWrapper>
@@ -56,7 +56,7 @@ const Card = ({ borderRadius }) => {
 				<DetailPrice>$1,899</DetailPrice>
 			</Detail>
 			<ButtonWrapper>
-				<Button fullWidth>Add to cart</Button>
+				<ButtonPrimary fullWidth>Add to cart</ButtonPrimary>
 			</ButtonWrapper>
 		</Wrapper>
 	);
